@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+    <!-- METODO META DE API LOG IN GOOGLE -->
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="66448144629-d2hev2h57v4kmb6f123pmnldv450bfiq.apps.googleusercontent.com">
+	<title></title> 
+	<meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" >
+    <link type="text/css" href="css/estilos.css" rel="stylesheet">
+
+    <!-- BOOSTRAP -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <!-- FIREBASE API -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
+<!-- Se tuvo que agregar el siguiente script para que funcione el js firebase/registrar() -->
+<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<!-- <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-analytics.js"></script> -->
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyArk_R1HT1_u0mYY7tiqHrGRRSP_CSCS2c",
+    authDomain: "bdtienda1.firebaseapp.com",
+    databaseURL: "https://bdtienda1.firebaseio.com",
+    projectId: "bdtienda1",
+    storageBucket: "bdtienda1.appspot.com",
+    messagingSenderId: "564791314580",
+    // appId: "1:564791314580:web:8f815c45720085baef4c81",
+    // measurementId: "G-LE4W5E0EV7"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  // firebase.analytics();
+</script>
+</head>  
+<body>
+    
+    <h1>Login</h1>
+     <div class="contenedor">
+         
+         <div class="input-contenedor">
+         <i class="fas fa-envelope icon"></i>
+         <input type="text" id="email2"placeholder="Correo Electronico">
+         </div>
+         
+         <div class="input-contenedor">
+        <i class="fas fa-key icon"></i>
+         <input type="password" id="contrasena2" placeholder="Contraseña">
+         
+         </div>
+         <input type="submit" id="login" value="Acceder" class="button" onclick="ingresar()">
+         <!--AGREGAR ESTO DE NUEVO AL BOTON DE LOGIN onclick="ingresar()" -->
+         <!-- Boton Login Google -->
+         <div class="g-signin2" data-onsuccess="onSignIn"></div>
+         
+         <p>Al registrarte, aceptas nuestras Condiciones de uso y Política de privacidad.</p>
+         <p>¿No tienes una cuenta? <a class="link" data-bs-toggle="modal" data-bs-target="#exampleModal">Registrate </a></p>
+     </div>
+
+
+     <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Registrarse</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+         <input class ="form-control" type="text" id="email" placeholder="Correo Electronico">
+         <div class="mt-2"></div>
+         <input class="form-control" type="password" id="contrasena" placeholder="Contraseña">
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" onclick = "registrar()">Registrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+     <!-- CONTENIDO OCULTO -->
+     <div id="contenido">
+         <!-- CONTENIDO OCULTO PARA USUARIOS NO INGRESADOS -->
+     </div>
+     <div id="correo1">
+        <p id="correo"></p>
+     </div>
+     <center>
+     <div id = logout></div>
+     </center>
+
+    <!-- Script google api login-->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+   <script>  function onSignIn(googleUser) {
+        // Useful data for your client-side scripts:
+        var profile = googleUser.getBasicProfile();
+        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+        console.log('Full Name: ' + profile.getName());
+        console.log('Given Name: ' + profile.getGivenName());
+        console.log('Family Name: ' + profile.getFamilyName());
+        console.log("Image URL: " + profile.getImageUrl());
+        console.log("Email: " + profile.getEmail());
+
+        // The ID token you need to pass to your backend:
+        var id_token = googleUser.getAuthResponse().id_token;
+        console.log("ID Token: " + id_token);
+      }
+    </script>
+
+    <script src="js/firebase.js"></script>
+
+    <!-- BOOSTRAP -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+    -->
+ </body>
+</html>

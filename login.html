@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+    <!-- METODO META DE API LOG IN GOOGLE -->
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="66448144629-d2hev2h57v4kmb6f123pmnldv450bfiq.apps.googleusercontent.com">
+	<title></title> 
+	<meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" >
+    <link type="text/css" href="css/estilos.css" rel="stylesheet">
+</head>  
+<body>
+    <form class="formulario" action="index.html" method="POST">
+    
+    <h1>Login</h1>
+     <div class="contenedor">
+     
+     
+         
+         <div class="input-contenedor">
+         <i class="fas fa-envelope icon"></i>
+         <input type="text" name="correologin"placeholder="Correo Electronico">
+         
+         </div>
+         
+         <div class="input-contenedor">
+        <i class="fas fa-key icon"></i>
+         <input type="password" name="contra" placeholder="Contraseña">
+         
+         </div>
+         <input type="submit" value="Login" class="button">
+         <!-- Boton Login -->
+         <div class="g-signin2" data-onsuccess="onSignIn"></div>
+         
+         <p>Al registrarte, aceptas nuestras Condiciones de uso y Política de privacidad.</p>
+         <p>¿No tienes una cuenta? <a class="link" href="registrar.html">Registrate </a></p>
+
+         <a class="link" href="prueba_login.html">PRUEBA LOGIN </a>
+     </div>
+    </form>
+
+    <!-- Script google api-->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+   <script>  function onSignIn(googleUser) {
+        // Useful data for your client-side scripts:
+        var profile = googleUser.getBasicProfile();
+        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+        console.log('Full Name: ' + profile.getName());
+        console.log('Given Name: ' + profile.getGivenName());
+        console.log('Family Name: ' + profile.getFamilyName());
+        console.log("Image URL: " + profile.getImageUrl());
+        console.log("Email: " + profile.getEmail());
+
+        // The ID token you need to pass to your backend:
+        var id_token = googleUser.getAuthResponse().id_token;
+        console.log("ID Token: " + id_token);
+      }
+    </script>
+    
+ </body>
+</html>

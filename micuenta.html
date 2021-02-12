@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Mi cuenta</title>
+	<!-- FIREBASE API -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
+<!-- Se tuvo que agregar el siguiente script para que funcione el js firebase/registrar() -->
+<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<!-- <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-analytics.js"></script> -->
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyArk_R1HT1_u0mYY7tiqHrGRRSP_CSCS2c",
+    authDomain: "bdtienda1.firebaseapp.com",
+    databaseURL: "https://bdtienda1.firebaseio.com",
+    projectId: "bdtienda1",
+    storageBucket: "bdtienda1.appspot.com",
+    messagingSenderId: "564791314580",
+    // appId: "1:564791314580:web:8f815c45720085baef4c81",
+    // measurementId: "G-LE4W5E0EV7"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  // firebase.analytics();
+</script>
+</head>
+<body>
+
+<div id="contenido"></div>
+
+</body>
+<script src="js/firebase.js"></script>
+</html>
